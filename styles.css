@@ -530,7 +530,7 @@ section {
 
 /* Spine text styling */
 .book-spine::after {
-    content: 'חיי שרה  |  שרה מילר';
+    content: 'חיי שרה  |  מיכל ברס';
     color: var(--color-gold);
     font-family: var(--font-heading);
     font-weight: 500;
