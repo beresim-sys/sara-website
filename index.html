@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Game Stylesheet -->
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
 
@@ -36,6 +38,7 @@
                     <li><a href="#hero">בית</a></li>
                     <li><a href="#about">על הספר</a></li>
                     <li><a href="#author">על המחברת</a></li>
+                    <li><a href="#family-game">המשחק המשפחתי</a></li>
                     <li><a href="#reviews">המלצות</a></li>
                     <li><a href="#purchase" class="btn btn-nav">להזמנה עכשיו</a></li>
                 </ul>
@@ -216,6 +219,113 @@
                             "ההשראה לכתיבת 'חיי שרה' הגיעה מתוך קופסת נעליים ישנה שמצאתי בעליית הגג של בית סבתי. בתוכה נחו מכתבי אהבה כתובים בדיו דהויה, ויומן אישי קטן שתיעד את קורותיה בשנת 1918. הבנתי שסיפוריהן של הנשים שבנו את הארץ הזו כמעט ולא סופרו במלוא קולם - וזהו חובי הספרותי והאישי להן."
                         </blockquote>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Interactive Family Tree & Trivia Game Section
+             ========================================================================== -->
+        <section class="game-section" id="family-game">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">חקירה אינטראקטיבית</span>
+                    <h2 class="section-title">המשחק המשפחתי: גלו את השורשים</h2>
+                    <div class="title-divider"></div>
+                    <p class="game-intro-text">
+                        הכירו את סיפורה המרתק והענף של משפחת אלטרס. עברו בין הענפים באילן היוחסין האינטראקטיבי או אתגרו את עצמכם בחידון השורשים המונה 40 שאלות!
+                    </p>
+                </div>
+
+                <!-- Mode Toggle Tabs -->
+                <div class="game-tabs">
+                    <button class="tab-btn active" data-tab="mode-tree">
+                        <i class="fa-solid fa-sitemap"></i> אילן היוחסין האינטראקטיבי
+                    </button>
+                    <button class="tab-btn" data-tab="mode-game">
+                        <i class="fa-solid fa-circle-question"></i> חידון השורשים המשפחתי
+                    </button>
+                </div>
+
+                <!-- Mode Content Wrapper -->
+                <div class="game-content-wrapper">
+                    
+                    <!-- Mode A: The Interactive Family Tree -->
+                    <div class="tab-content active" id="mode-tree">
+                        <div class="tree-explorer-container">
+                            <div class="tree-instructions">
+                                <p><i class="fa-solid fa-info-circle"></i> לחצו על כרטיס משפחה כדי לחקור את בני הזוג והצאצאים שלהם. ענף הספר (שרה) וענף המחברת (מיכל) מודגשים במיוחד.</p>
+                                <div class="tree-legend">
+                                    <span class="legend-item"><span class="legend-dot book-branch"></span> ענף הספר (שרה)</span>
+                                    <span class="legend-item"><span class="legend-dot author-node"></span> המחברת (מיכל ברס)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Tree Canvas / Viewport Area -->
+                            <div class="tree-viewport" id="treeViewport">
+                                <div class="tree-pan-zoom" id="treePanZoom">
+                                    <!-- Dynamic Flex Tree rendered by JS -->
+                                </div>
+                            </div>
+                            
+                            <!-- Detail Panel -->
+                            <div class="node-detail-panel" id="nodeDetailPanel">
+                                <h3 id="detailName">טוען נתונים...</h3>
+                                <span class="relation-badge" id="detailRelation">-</span>
+                                <div class="detail-section">
+                                    <h4>בן/בת זוג:</h4>
+                                    <p id="detailSpouse">-</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4>ילדים:</h4>
+                                    <ul id="detailChildren">
+                                        <!-- Populated by JS -->
+                                    </ul>
+                                </div>
+                                <p class="detail-story" id="detailStory">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mode B: 40-Question Trivia Quiz -->
+                    <div class="tab-content" id="mode-game">
+                        <div class="trivia-game-container">
+                            <div class="quiz-header">
+                                <div class="quiz-progress-wrapper">
+                                    <span class="quiz-progress-text">שאלה 1 מתוך 40</span>
+                                    <div class="quiz-progress-bar-container">
+                                        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="quiz-score-badge">
+                                    ניקוד: <span id="quizScore">0</span> / 40
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-body">
+                                <h3 class="quiz-question" id="quizQuestion">כמה ילדים נולדו לסולטנה ורפאל אלטרס?</h3>
+                                <div class="quiz-options" id="quizOptions">
+                                    <!-- Options buttons generated by JS -->
+                                </div>
+                                
+                                <!-- Feedback Card with Explanations -->
+                                <div class="quiz-feedback-card hidden" id="quizFeedbackCard">
+                                    <div class="feedback-icon" id="feedbackIcon"></div>
+                                    <div class="feedback-text-content">
+                                        <h4 id="feedbackTitle">-</h4>
+                                        <p id="feedbackExplanation">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-footer">
+                                <button class="btn btn-primary" id="nextQuestionBtn" disabled>
+                                    שאלה הבאה <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -417,6 +527,7 @@
                     <li><a href="#hero">בית</a></li>
                     <li><a href="#about">על הספר</a></li>
                     <li><a href="#author">על המחברת</a></li>
+                    <li><a href="#family-game">המשחק המשפחתי</a></li>
                     <li><a href="#reviews">המלצות</a></li>
                 </ul>
             </div>
@@ -445,7 +556,19 @@
         </div>
     </div>
 
-    <!-- Script file -->
+    <!-- Victory Star Shower Elements -->
+    <div class="victory-modal" id="victoryModal">
+        <div class="victory-content">
+            <div class="victory-star-icon"><i class="fa-solid fa-star"></i></div>
+            <h2 id="victoryTitle">כל הכבוד!</h2>
+            <p id="victoryMessage">תודה שחיברתם את השורשים המשפחתיים של משפחת אלטרס!</p>
+            <button class="btn btn-primary" id="closeVictoryBtn">שחק שוב <i class="fa-solid fa-rotate-left"></i></button>
+        </div>
+    </div>
+    <canvas id="starCanvas" class="star-canvas hidden"></canvas>
+
+    <!-- Script files -->
     <script src="script.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
