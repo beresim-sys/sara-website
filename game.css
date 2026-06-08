@@ -177,15 +177,50 @@
 }
 
 .tree-pan-zoom {
-    min-width: 1200px;
-    min-height: 560px;
-    padding: 40px;
+    min-width: 1000px;
+    min-height: 480px;
+    padding: 30px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     direction: rtl; /* RTL content direction */
+    transform-origin: top center;
+    transition: transform 0.2s ease-out;
+}
+
+/* Zoom Controls */
+.tree-zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+
+.tree-zoom-controls button {
+    background-color: var(--bg-white);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    color: var(--text-primary);
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-quick);
+}
+
+.tree-zoom-controls button:hover {
+    background-color: var(--color-gold-light);
+    border-color: var(--color-gold);
+    color: var(--color-gold);
 }
 
 /* Tree Nodes Styles */
@@ -204,8 +239,8 @@
     background-color: var(--bg-cream);
     border: 2px solid rgba(10, 23, 44, 0.15);
     border-radius: 6px;
-    padding: 16px 20px;
-    width: 190px;
+    padding: 10px 12px;
+    width: 140px;
     text-align: center;
     cursor: pointer;
     position: relative;
@@ -228,14 +263,18 @@
 
 .family-card .card-name {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .family-card .card-spouse {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-style: italic;
     white-space: nowrap;
@@ -306,7 +345,7 @@
 
 .tree-node-wrapper {
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .tree-node-wrapper.has-children::after {
@@ -315,16 +354,16 @@
     bottom: 0;
     left: 50%;
     width: 2px;
-    height: 20px;
+    height: 15px;
     background-color: rgba(197, 160, 89, 0.35);
 }
 
 .tree-children-row {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 16px;
     position: relative;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 /* Horizontal line connector */
@@ -332,8 +371,8 @@
     content: '';
     position: absolute;
     top: 0;
-    left: calc(50% - (100% - 220px) / 2);
-    right: calc(50% - (100% - 220px) / 2);
+    left: calc(50% - (100% - 160px) / 2);
+    right: calc(50% - (100% - 160px) / 2);
     height: 2px;
     background-color: rgba(197, 160, 89, 0.35);
 }

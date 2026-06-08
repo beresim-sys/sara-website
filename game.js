@@ -799,6 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Recenter the tree viewport
     function recenterTreeView() {
         if (treeViewport && treePanZoom) {
+            applyZoom();
             setTimeout(() => {
                 treeViewport.scrollLeft = (treePanZoom.offsetWidth - treeViewport.offsetWidth) / 2;
                 treeViewport.scrollTop = 0;
@@ -1145,6 +1146,61 @@ document.addEventListener('DOMContentLoaded', () => {
             cancelAnimationFrame(animationFrameId);
             canvas.classList.add('hidden');
         }, 8000);
+    }
+
+    /* ==========================================================================
+       Zoom Controls for Family Tree
+       ========================================================================== */
+    let currentZoom = 0.65; // Default zoom level
+
+    function applyZoom() {
+        if (treePanZoom) {
+            treePanZoom.style.transform = `scale(${currentZoom})`;
+        }
+    }
+
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    const zoomFitBtn = document.getElementById('zoomFitBtn');
+    const zoomResetBtn = document.getElementById('zoomResetBtn');
+
+    if (zoomInBtn) {
+        zoomInBtn.addEventListener('click', () => {
+            if (currentZoom < 1.5) {
+                currentZoom += 0.1;
+                applyZoom();
+            }
+        });
+    }
+
+    if (zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', () => {
+            if (currentZoom > 0.35) {
+                currentZoom -= 0.1;
+                applyZoom();
+            }
+        });
+    }
+
+    if (zoomResetBtn) {
+        zoomResetBtn.addEventListener('click', () => {
+            currentZoom = 1.0;
+            applyZoom();
+            recenterTreeView();
+        });
+    }
+
+    if (zoomFitBtn) {
+        zoomFitBtn.addEventListener('click', () => {
+            if (treeViewport && treePanZoom) {
+                const viewportWidth = treeViewport.clientWidth;
+                const treeWidth = treePanZoom.scrollWidth || 1200;
+                const fitScale = (viewportWidth - 40) / treeWidth;
+                currentZoom = Math.max(0.35, Math.min(fitScale, 1.0));
+                applyZoom();
+                recenterTreeView();
+            }
+        });
     }
 
     /* ==========================================================================
