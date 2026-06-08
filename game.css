@@ -335,87 +335,93 @@
     z-index: 10;
 }
 
-/* Custom CSS Tree Lines */
+/* Custom CSS Tree Lines - Horizontal (Right-to-Left Layout) */
 .tree-branch {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Parent on the right, children on the left */
     align-items: center;
     position: relative;
 }
 
 .tree-node-wrapper {
     position: relative;
-    padding-bottom: 15px;
+    padding-left: 24px; /* Space on the left for line connector */
 }
 
+/* Horizontal line connector going left from the parent card */
 .tree-node-wrapper.has-children::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    height: 15px;
+    top: 50%;
+    left: 0;
+    width: 24px;
+    height: 2px;
     background-color: rgba(197, 160, 89, 0.35);
+    transform: translateY(-50%);
 }
 
 .tree-children-row {
     display: flex;
+    flex-direction: column; /* Stack siblings vertically */
     justify-content: center;
     gap: 16px;
     position: relative;
-    padding-top: 15px;
+    padding-right: 24px; /* Space on the right for line connectors */
 }
 
-/* Horizontal line connector */
+/* Vertical connector line connecting all siblings */
 .tree-children-row::before {
     content: '';
     position: absolute;
     top: 0;
-    left: calc(50% - (100% - 160px) / 2);
-    right: calc(50% - (100% - 160px) / 2);
-    height: 2px;
+    bottom: 0;
+    right: 0;
+    width: 2px;
     background-color: rgba(197, 160, 89, 0.35);
 }
 
-/* Hide horizontal line if only one child */
+/* Hide vertical connector line if only one child */
 .tree-children-row:has(> .tree-branch:only-child)::before {
     display: none;
 }
 
-/* Vertical line from connector to child */
+/* Horizontal line going from the vertical line to each child card */
 .tree-children-row > .tree-branch::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 20px;
+    top: 50%;
+    right: 0;
+    width: 24px;
+    height: 2px;
     background-color: rgba(197, 160, 89, 0.35);
+    transform: translateY(-50%);
 }
 
-/* Fix connector line bounds */
+/* Mask vertical connector line above the first sibling */
 .tree-children-row > .tree-branch:first-child::after {
     content: '';
     position: absolute;
     top: 0;
-    right: 50%;
-    left: 0;
-    height: 2px;
-    background-color: var(--bg-white); /* Masks left overhang */
+    bottom: 50%;
+    right: 0;
+    width: 2px;
+    background-color: var(--bg-white); /* Matches viewport background to hide upper line extension */
     z-index: 1;
 }
 
+/* Mask vertical connector line below the last sibling */
 .tree-children-row > .tree-branch:last-child::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
+    top: 50%;
+    bottom: 0;
     right: 0;
-    height: 2px;
-    background-color: var(--bg-white); /* Masks right overhang */
+    width: 2px;
+    background-color: var(--bg-white); /* Matches viewport background to hide lower line extension */
     z-index: 1;
 }
 
+/* Hide masks for only child */
 .tree-children-row > .tree-branch:only-child::after {
     display: none;
 }

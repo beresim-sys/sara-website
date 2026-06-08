@@ -1151,7 +1151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        Zoom Controls for Family Tree
        ========================================================================== */
-    let currentZoom = 0.65; // Default zoom level
+    let currentZoom = 0.85; // Default zoom level
 
     function applyZoom() {
         if (treePanZoom) {
