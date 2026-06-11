@@ -13,11 +13,19 @@
 }
 
 .game-intro-text {
-    max-width: 700px;
+    max-width: 950px;
     margin: 0 auto 30px auto;
     font-size: 1.15rem;
     color: var(--text-secondary);
     text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .game-intro-text {
+        white-space: normal;
+        max-width: 100%;
+    }
 }
 
 /* Tab Controls */
