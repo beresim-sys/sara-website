@@ -240,7 +240,7 @@
                 <!-- Mode Toggle Tabs -->
                 <div class="game-tabs">
                     <button class="tab-btn active" data-tab="mode-tree">
-                        <i class="fa-solid fa-sitemap"></i> אילן היוחסין האינטראקטיבי
+                        <i class="fa-solid fa-sitemap"></i> אילן היוחסין המשפחתי
                     </button>
                     <button class="tab-btn" data-tab="mode-game">
                         <i class="fa-solid fa-circle-question"></i> חידון השורשים המשפחתי
@@ -250,46 +250,14 @@
                 <!-- Mode Content Wrapper -->
                 <div class="game-content-wrapper">
                     
-                    <!-- Mode A: The Interactive Family Tree -->
+                    <!-- Mode A: The Family Tree Image -->
                     <div class="tab-content active" id="mode-tree">
-                        <div class="tree-explorer-container">
-                            <div class="tree-instructions">
-                                <p><i class="fa-solid fa-info-circle"></i> לחצו על כרטיס משפחה כדי לחקור את בני הזוג והצאצאים שלהם. ענף הספר (שרה) וענף המחברת (מיכל) מודגשים במיוחד.</p>
-                                <div class="tree-legend">
-                                    <span class="legend-item"><span class="legend-dot book-branch"></span> ענף הספר (שרה)</span>
-                                    <span class="legend-item"><span class="legend-dot author-node"></span> המחברת (מיכל ברס)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Tree Canvas / Viewport Area -->
-                            <div class="tree-viewport" id="treeViewport">
-                                <!-- Zoom Controls -->
-                                <div class="tree-zoom-controls">
-                                    <button id="zoomInBtn" title="הגדל (+)"><i class="fa-solid fa-plus"></i></button>
-                                    <button id="zoomOutBtn" title="הקטן (-)"><i class="fa-solid fa-minus"></i></button>
-                                    <button id="zoomFitBtn" title="התאם למסך"><i class="fa-solid fa-expand"></i></button>
-                                    <button id="zoomResetBtn" title="אפס זום"><i class="fa-solid fa-rotate-left"></i></button>
-                                </div>
-                                <div class="tree-pan-zoom" id="treePanZoom">
-                                    <!-- Dynamic Flex Tree rendered by JS -->
-                                </div>
-                            </div>
-                            
-                            <!-- Detail Panel -->
-                            <div class="node-detail-panel" id="nodeDetailPanel">
-                                <h3 id="detailName">טוען נתונים...</h3>
-                                <span class="relation-badge" id="detailRelation">-</span>
-                                <div class="detail-section">
-                                    <h4>בן/בת זוג:</h4>
-                                    <p id="detailSpouse">-</p>
-                                </div>
-                                <div class="detail-section">
-                                    <h4>ילדים:</h4>
-                                    <ul id="detailChildren">
-                                        <!-- Populated by JS -->
-                                    </ul>
-                                </div>
-                                <p class="detail-story" id="detailStory">-</p>
+                        <div class="tree-image-container">
+                            <a href="family tree.jpg" target="_blank" class="tree-image-link" title="לחצו להגדלה בחלון חדש">
+                                <img src="family tree.jpg" alt="אילן היוחסין המשפחתי של משפחת אלטרס" class="family-tree-img">
+                            </a>
+                            <div class="tree-image-tip">
+                                <p><i class="fa-solid fa-search-plus"></i> לחצו על התמונה כדי לפתוח ולהגדיל אותה בחלון חדש</p>
                             </div>
                         </div>
                     </div>
