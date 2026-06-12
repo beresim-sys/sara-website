@@ -96,7 +96,7 @@
 
 .case-study-split {
     display: grid;
-    grid-template-columns: 1fr 1.22fr;
+    grid-template-columns: 1.1fr 1.22fr;
     gap: 40px;
     align-items: center;
     margin-top: 40px;
@@ -115,7 +115,7 @@
     padding: 16px 16px 45px 16px;
     border: 1px solid #e5dccb;
     box-shadow: 0 15px 35px rgba(10, 23, 44, 0.08), 0 5px 15px rgba(0, 0, 0, 0.05);
-    max-width: 585px;
+    max-width: 644px;
     margin: 0 auto;
     border-radius: 2px;
 }
