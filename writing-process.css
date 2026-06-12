@@ -216,6 +216,21 @@
     .cs-tabs {
         grid-template-columns: 1fr;
     }
+    .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+    }
+    .tool-card {
+        padding: 15px;
+    }
+    .tool-icon {
+        font-size: 1.5rem;
+        margin-bottom: 9px;
+    }
+    .tool-name {
+        font-size: 0.9rem;
+    }
 }
 
 .cs-content-pane {
