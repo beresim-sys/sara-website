@@ -183,6 +183,29 @@
     background-color: var(--color-gold);
 }
 
+.cs-tab-btn-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-gold-hover);
+    margin-right: auto;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 4px;
+    transition: var(--transition-quick);
+    background-color: transparent;
+}
+
+.cs-tab-btn-link:hover {
+    color: var(--bg-white) !important;
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
 .cs-content-pane {
     display: none;
     animation: csFadeIn 0.4s ease-out forwards;
