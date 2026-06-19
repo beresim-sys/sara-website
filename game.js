@@ -527,9 +527,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 8000);
     }
 
-    /* ==========================================================================
-       6. Initializations
-       ========================================================================== */
+    const restartQuizBtn = document.getElementById('restartQuizBtn');
+    if (restartQuizBtn) {
+        restartQuizBtn.addEventListener('click', () => {
+            if (confirm('האם את/ה בטוח/ה שברצונך להתחיל את החידון מחדש?')) {
+                initQuiz();
+            }
+        });
+    }
+
     initQuiz();
 
 });
